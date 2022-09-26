@@ -2,14 +2,9 @@
 import sys
 import time
 import os
-import math
 from syncthing import Syncthing
 import xml.etree.ElementTree as ET
 from threading import Thread
-
-# TODO: use dp.completion when finally fixed
-# TODO: sync conflict
-# TODO: publish
 
 IDLE_ICON = ''
 PAUSE_ICON = ' '

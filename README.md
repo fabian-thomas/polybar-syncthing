@@ -4,6 +4,10 @@ This whole script was written some time ago as a proof of concept and is not ful
 But it worked more or less reliably for me since then.
 Therefore I'm publishing it if someone is interested in contributing or using.
 
+![idle](img/idle.png)
+![sync](img/sync.png)
+![pause](img/pause.png)
+
 ## Polybar
 
 ``` ini
@@ -35,3 +39,8 @@ Feel free to replace the used icons and submit PRs for replacing those via comma
 ## Similar projects
 
 - [syncthing-status](https://github.com/carldelfin/syncthing-status) written in R lang.
+
+## Todos
+
+- use db.completion endpoint when finally fixed
+- show sync conflict with another icon
