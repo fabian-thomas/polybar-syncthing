@@ -51,7 +51,8 @@ class ProgressTask:
         self.running = False
 
 # read api key from syncthing config
-tree = ET.parse(os.path.join(os.environ['XDG_CONFIG_HOME'], 'syncthing/config.xml'))
+tree = ET.parse(os.path.join(os.environ.get('XDG_CONFIG_HOME',
+        os.path.join(os.environ["HOME"], ".config")), 'syncthing/config.xml'))
 api_key = tree.getroot().find('gui').find('apikey').text
 
 s = Syncthing(api_key)
