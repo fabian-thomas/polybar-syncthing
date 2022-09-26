@@ -8,6 +8,8 @@ Therefore I'm publishing it if someone is interested in contributing or using.
 ![sync](img/cropped/sync.png)
 ![pause](img/cropped/pause.png)
 
+idle, sync, pause
+
 ## Polybar
 
 ``` ini
