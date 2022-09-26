@@ -4,9 +4,9 @@ This whole script was written some time ago as a proof of concept and is not ful
 But it worked more or less reliably for me since then.
 Therefore I'm publishing it if someone is interested in contributing or using.
 
-![idle](img/idle.png)
-![sync](img/sync.png)
-![pause](img/pause.png)
+![idle](img/cropped/idle.png)
+![sync](img/cropped/sync.png)
+![pause](img/cropped/pause.png)
 
 ## Polybar
 
