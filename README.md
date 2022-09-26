@@ -46,3 +46,4 @@ Feel free to replace the used icons and submit PRs for replacing those via comma
 
 - use db.completion endpoint when finally fixed
 - show sync conflict with another icon
+- fix sometimes hangs on big sync (?)
