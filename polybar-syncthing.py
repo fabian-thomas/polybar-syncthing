@@ -2,13 +2,13 @@
 import sys
 import time
 import os
-from syncthing import Syncthing
+from syncthing import Syncthing, SyncthingError
 import xml.etree.ElementTree as ET
 from threading import Thread
 
 IDLE_ICON = ''
-PAUSE_ICON = ' '
-SYNC_ICON = ' '
+PAUSE_ICON = ''
+SYNC_ICON = ''
 
 def get_progress():
     progress_sum = 0
@@ -39,7 +39,8 @@ class ProgressTask:
         while self.running:
             progress = get_progress()
 
-            print('%s %d' % (SYNC_ICON, progress))
+            # TODO: this makes no difference since we have no mono font
+            print('%s %s' % (SYNC_ICON, str(progress).rjust(3)))
             sys.stdout.flush()
 
             if progress == 100:
@@ -91,7 +92,7 @@ for event in event_stream:
                 stop_progress_thread()
                 print('%s 100' % IDLE_ICON)
             else:
-                print('%s %d' % (SYNC_ICON, get_progress()))
+                print('%s %s' % (SYNC_ICON, str(get_progress()).rjust(3)))
             sys.stdout.flush()
 
             # make quick rescans visible
