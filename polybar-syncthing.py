@@ -78,22 +78,26 @@ def start_progress_thread():
 start_progress_thread()
 
 # Begin long running event stream. We get woken up when an event happens.
-event_stream = s.events(limit=10)
-for event in event_stream:
-    if s.stats.folder() == {}:
-        stop_progress_thread()
-        print('%s 100' % PAUSE_ICON)
-        sys.stdout.flush()
-    elif event['type'] == 'StateChanged':
-        if event['data']['to'] == 'syncing':
-            start_progress_thread()
-        else:
-            if event['data']['to'] == 'idle':
+while True:
+    try:
+        event_stream = s.events(limit=10)
+        for event in event_stream:
+            if s.stats.folder() == {}:
                 stop_progress_thread()
-                print('%s 100' % IDLE_ICON)
-            else:
-                print('%s %s' % (SYNC_ICON, str(get_progress()).rjust(3)))
-            sys.stdout.flush()
+                print('%s 100' % PAUSE_ICON)
+                sys.stdout.flush()
+            elif event['type'] == 'StateChanged':
+                if event['data']['to'] == 'syncing':
+                    start_progress_thread()
+                else:
+                    if event['data']['to'] == 'idle':
+                        stop_progress_thread()
+                        print('%s 100' % IDLE_ICON)
+                    else:
+                        print('%s %s' % (SYNC_ICON, str(get_progress()).rjust(3)))
+                    sys.stdout.flush()
 
-            # make quick rescans visible
-            time.sleep(0.1)
+                    # make quick rescans visible
+                    time.sleep(0.1)
+    except SyncthingError:
+        pass
