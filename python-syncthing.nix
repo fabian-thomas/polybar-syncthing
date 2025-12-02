@@ -2,7 +2,7 @@
 , fetchFromGitHub
 , setuptools
 , requests
-, dateutil
+, python-dateutil
 , applyPatches
 }:
 
@@ -27,6 +27,6 @@ buildPythonPackage rec {
 
   propagatedBuildInputs = [
     requests
-    dateutil
+    python-dateutil
   ];
 }
